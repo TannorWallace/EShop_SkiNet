@@ -23,9 +23,10 @@ namespace API
                 var services = scope.ServiceProvider;
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
-                {
+                {//Create Database if it does not alreay exist
                     var context = services.GetRequiredService<StoreContext>();
-                    await context.Database.MigrateAsync(); //Create Database if it does not alreay exist
+                    await context.Database.MigrateAsync();
+                    await StoreContextSeed.SeedAsync(context, loggerFactory);
                 }
                 catch(Exception ex)
                 {
