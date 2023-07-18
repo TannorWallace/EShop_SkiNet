@@ -33,6 +33,8 @@ namespace API
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             //repos
             services.AddScoped<IProductRepository, ProductRepository>();
+            //GENERIC REPO
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             //end of repos
             services.AddSwaggerGen(c =>
             {
