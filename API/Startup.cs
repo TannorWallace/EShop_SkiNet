@@ -36,6 +36,7 @@ namespace API
             //GENERIC REPO
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             //end of repos
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
@@ -55,6 +56,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

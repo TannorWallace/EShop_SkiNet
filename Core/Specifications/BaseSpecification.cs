@@ -8,6 +8,8 @@ namespace Core.Specifications
 {
     public class BaseSpecification<T> : ISpecification<T>
     {
+        //ctor
+        
         public BaseSpecification()
         {
         }
@@ -17,6 +19,7 @@ namespace Core.Specifications
             Criteria = criteria;
         }
 
+        //end ctor's
         public Expression<Func<T, bool>> Criteria { get; }
         public List<Expression<Func<T, object>>> Includes { get; } = 
             new List<Expression<Func<T, object>>>();
